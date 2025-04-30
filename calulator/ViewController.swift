@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         label.textAlignment = .right
         return label
     }()
-   
+    
     
     
     override func viewDidLoad() {
@@ -87,12 +87,13 @@ class ViewController: UIViewController {
         for button in numberButtons {
             button.addTarget(self, action: #selector(didTapNumberButton(_:)), for: .touchUpInside)
         }
-
+        
     }
     @objc func didTapNumberButton(_ sender: UIButton) {
         let number = sender.tag
         label.text = "\(number)"
-
-
+        
+        
+    }
+    
 }
-
