@@ -9,12 +9,25 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    func createButton(systemImageName: String) -> UIButton {
+    func createButton(systemImageName: String, tag: Int? = nil) -> UIButton {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: systemImageName), for: .normal)
+        if let tag = tag {
+            button.tag = tag
+        }
         return button
     }
+    
+    let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "0"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.textAlignment = .right
+        return label
+    }()
+   
     
     
     override func viewDidLoad() {
@@ -22,16 +35,24 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .white
         
-        let button1 = createButton(systemImageName: "1.circle")
-        let button2 = createButton(systemImageName: "2.circle")
-        let button3 = createButton(systemImageName: "3.circle")
-        let button4 = createButton(systemImageName: "4.circle")
-        let button5 = createButton(systemImageName: "5.circle")
-        let button6 = createButton(systemImageName: "6.circle")
-        let button7 = createButton(systemImageName: "7.circle")
-        let button8 = createButton(systemImageName: "8.circle")
-        let button9 = createButton(systemImageName: "9.circle")
-        let button0 = createButton(systemImageName: "0.circle")
+        view.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            label.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        let button1 = createButton(systemImageName: "1.circle", tag: 1)
+        let button2 = createButton(systemImageName: "2.circle", tag: 2)
+        let button3 = createButton(systemImageName: "3.circle", tag: 3)
+        let button4 = createButton(systemImageName: "4.circle", tag: 4)
+        let button5 = createButton(systemImageName: "5.circle", tag: 5)
+        let button6 = createButton(systemImageName: "6.circle", tag: 6)
+        let button7 = createButton(systemImageName: "7.circle", tag: 7)
+        let button8 = createButton(systemImageName: "8.circle", tag: 8)
+        let button9 = createButton(systemImageName: "9.circle", tag: 9)
+        let button0 = createButton(systemImageName: "0.circle", tag: 0)
         let buttonPlus = createButton(systemImageName: "plus.circle")
         let buttonMinus = createButton(systemImageName: "minus.circle")
         let buttonMultiply = createButton(systemImageName: "multiply.circle")
@@ -56,8 +77,8 @@ class ViewController: UIViewController {
         view.addSubview(rowStack)
         
         NSLayoutConstraint.activate([
-            rowStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            rowStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            rowStack.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 50),
+            rowStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150),
             rowStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             rowStack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
         ])
