@@ -82,7 +82,16 @@ class ViewController: UIViewController {
             rowStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             rowStack.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5)
         ])
+        
+        let numberButtons = [button0, button1, button2, button3, button4, button5, button6, button7, button8, button9]
+        for button in numberButtons {
+            button.addTarget(self, action: #selector(didTapNumberButton(_:)), for: .touchUpInside)
+        }
+
     }
+    @objc func didTapNumberButton(_ sender: UIButton) {
+        let number = sender.tag
+        label.text = "\(number)"
 
 
 }
